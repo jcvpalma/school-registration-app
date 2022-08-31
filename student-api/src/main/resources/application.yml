@@ -19,7 +19,7 @@ spring:
     enabled: true
     validate-on-migrate: true
     password: 123
-    user: mystudent
+    user: root
     locations:
       - classpath:db/migration
     sql-migration-prefix: v

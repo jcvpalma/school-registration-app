@@ -5,5 +5,5 @@ USER desenv:desenv
 
 VOLUME /tmp
 ARG JAR_FILE
-COPY ${JAR_FILE} student-api.jar
-ENTRYPOINT ["java", "-jar", "/student-api.jar"]
+COPY build/libs/student-api-0.0.1.jar /student-api.jar
+ENTRYPOINT ["java", "-jar", "student-api.jar", "-Dspring.active.profiles=default"]
