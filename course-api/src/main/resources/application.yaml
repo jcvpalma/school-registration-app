@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: course-api
+    description: API to register course
+    version: 0.0.1
+  profiles:
+    active: default
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3307/coursedb
+    username: mycourse
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    initSql: classpath:db/migration/00_creaste_database.sql
+    enabled: true
+    validate-on-migrate: true
+    password: 123
+    user: mycourse
+    locations:
+      - classpath:db/migration
+    sql-migration-prefix: v
+
+springdoc:
+  packages-to-scan:
+    - br.com.jcvpalma.courseapi.domain.controllers
+  swagger-ui:
+    path: /swagger-ui.html
+    use-root-path: true
+    operations-sorter: method
+
+logging:
+  level:
+    root: INFO #TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+
+server:
+  port: 8082
+  servlet:
+    context-path: /course-api

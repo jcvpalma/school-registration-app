@@ -1,0 +1,28 @@
+version: '3.0'
+services:
+  mysql-student-test:
+    image: mariadb:10.8.2
+    container_name: mysql-student-test
+    environment:
+      - MARIADB_PASSWORD=123
+      - MARIADB_USER=mystudent
+      - MARIADB_ROOT_PASSWORD=123
+    ports:
+      - 3306:3306
+    networks:
+      - mysql-network
+  student-api-test:
+    image: jcvpalma/student-api
+    container_name: student-api-test
+    ports:
+      - 8081:8081
+    networks:
+      - spring-boot-network
+    depends_on:
+      - mysql-student-test
+
+networks:
+  mysql-network:
+    driver: bridge
+  spring-boot-network:
+    driver: bridge

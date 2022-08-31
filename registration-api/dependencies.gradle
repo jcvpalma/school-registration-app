@@ -1,0 +1,21 @@
+def lombokVersion = "1.18.24"
+def flywayDbVersion = '8.5.13'
+def mysqlConnectoVersion = '8.0.29'
+def springdocOpenApiVersion = '1.6.9'
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    //JPA, Hibernate, Flyway, MySQL
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    implementation "org.flywaydb:flyway-core:${flywayDbVersion}"
+    implementation "org.flywaydb:flyway-mysql:${flywayDbVersion}"
+    implementation "mysql:mysql-connector-java:${mysqlConnectoVersion}"
+
+    //Swagger, openapi, springdoc
+    implementation "org.springdoc:springdoc-openapi-ui:${springdocOpenApiVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}

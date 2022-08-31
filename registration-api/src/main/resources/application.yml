@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: registration-api
+    description: API responsible to register Students in courses
+    version: 0.0.1
+  profiles:
+    active: default
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3308/registrationdb
+    username: myregistration
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  flyway:
+    enabled: true
+    validate-on-migrate: true
+    password: 123
+    user: myregistration
+    locations:
+      - classpath:db/migration
+    sql-migration-prefix: v
+
+springdoc:
+  packages-to-scan:
+    - br.com.jcvpalma.registrationapi.domain.controllers
+  swagger-ui:
+    path: /swagger-ui.html
+    use-root-path: true
+    operations-sorter: method
+
+server:
+  port: 8083
+  servlet:
+    context-path: /registration-api
+
+logging:
+  level:
+    root: INFO #TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF

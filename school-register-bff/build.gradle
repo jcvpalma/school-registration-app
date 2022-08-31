@@ -1,0 +1,25 @@
+plugins {
+	id 'org.springframework.boot' version "${springBootVersion}"
+	id 'io.spring.dependency-management' version "${dependencyManagementVersion}"
+	id 'java'
+	id 'maven-publish'
+}
+
+def jarSuffix = System.getenv('JAR_SUFFIX') ?: ''
+group =  group
+version = version + jarSuffix
+sourceCompatibility = jvmVersion
+
+
+apply from: 'dependencies.gradle'
+
+repositories {
+
+	mavenLocal()
+	mavenCentral()
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
